@@ -1,1 +1,35 @@
+first unique character
+leetcode-> here first unique character is l and its index value is 0
+Hashmap->key no of occurrences
+Alogorithm: 1)Go through the string,create a hashmap & save the no of times each character occurs in the string
+2)Iterate over the string, use hashmap to see if current character at position i occured 1 time or not
+If it occured 1 time, return i & break
+leetcode->  l ->1
+            e->2 and it becomes e->3
+            t->1
+            c->1
+            o->1
+            d->1
+            .
+            .
+            .
+            26 characters
+            
+            
+TC: O(N)
+SC: O(1)
 
+Time Complexity : O(n)
+
+
+public class Solution {
+    public int firstUniqChar(String s) {
+        int freq [] = new int[26];
+        for(int i = 0; i < s.length(); i ++)
+            freq [s.charAt(i) - 'a'] ++;
+        for(int i = 0; i < s.length(); i ++)
+            if(freq [s.charAt(i) - 'a'] == 1)
+                return i;
+        return -1;
+    }
+}
