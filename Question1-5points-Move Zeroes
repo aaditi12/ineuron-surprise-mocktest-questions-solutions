@@ -1,1 +1,40 @@
+Explanation
+The goal of this solution is to move all the zeroes in the input array nums to the end of the array while maintaining the relative order of the non-zero elements
 
+Approach
+Initialize a variable m to -1, which will keep track of the position of the first zero encountered.
+Traverse the array nums from left to right: a. If the current element is zero, and m is -1 or the element at position m is non-zero, set m to the current index. b. If the current element is non-zero and m is not -1, swap the current element with the element at position m and increment m.
+After the traversal, all the zeroes will be at the end of the array, and the relative order of the non-zero elements will be maintained.
+Complexity
+Time complexity:
+O(n), where n is the length of the input array nums. The algorithm iterates through the array once
+
+Space complexity:
+O(1), as the algorithm only uses a constant amount of extra space to store the variable m and the temporary variable temp used for swapping elements.
+
+Code
+class Solution {
+    public void moveZeroes(int[] nums) {
+        int m=-1;
+        for(int i=0; i<nums.length; i++)
+        {
+            if(nums[i]==0)
+            {
+                if(m==-1 || nums[m]!=0)
+                {
+                    m=i;
+                }
+            }
+            else
+            {
+                if(m!=-1)
+                {
+                    int temp = nums[i];
+                    nums[i]=nums[m];
+                    nums[m]=temp;
+                    m++;
+                }
+            }
+        }
+    }
+}
